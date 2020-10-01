@@ -85,6 +85,7 @@ export class IonTabs extends React.Component<Props> {
   render() {
     let outlet: React.ReactElement<{}> | undefined;
     let tabBar: React.ReactElement | undefined;
+    const { className, onIonTabsDidChange, onIonTabsWillChange, ...props } = this.props;
 
     const children = typeof this.props.children === 'function' ?
       (this.props.children as ChildFunction)(this.ionTabContextState) : this.props.children;
@@ -99,14 +100,12 @@ export class IonTabs extends React.Component<Props> {
         outlet = child.props.children[0];
       }
       if (child.type === IonTabBar) {
-        const { onIonTabsDidChange, onIonTabsWillChange } = this.props;
         tabBar = React.cloneElement(child, {
           onIonTabsDidChange,
           onIonTabsWillChange,
           ref: this.tabBarRef
         });
       } else if (child.type === Fragment && child.props.children[1].type === IonTabBar) {
-        const { onIonTabsDidChange, onIonTabsWillChange } = this.props;
         tabBar = React.cloneElement(child.props.children[1], {
           onIonTabsDidChange,
           onIonTabsWillChange,
@@ -122,7 +121,7 @@ export class IonTabs extends React.Component<Props> {
       throw new Error('IonTabs needs a IonTabBar');
     }
 
-    const { className, ...props } = this.props;
+
 
     return (
       <IonTabsContext.Provider

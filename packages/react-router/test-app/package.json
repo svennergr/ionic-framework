@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.8.4",
+    "@babel/core": "7.28.5",
     "@capacitor/android": "^2.2.0",
     "@capacitor/core": "1.5.2",
     "@capacitor/ios": "^2.2.0",
